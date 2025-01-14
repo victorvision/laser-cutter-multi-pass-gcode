@@ -1,6 +1,6 @@
 ﻿if (args.Length < 1)
 {
-    Console.WriteLine("ERRO! Você tentou executar o programa sem caminho. Execute arrastando um arquivo .gc para este executável.");
+    Console.WriteLine("ERROR! Tried to run without file path. Run this by dragging and dropping a file .gc into the .exe file.");
     Console.ReadKey();
     return;
 }
@@ -11,7 +11,7 @@ var fileExtension = Path.GetExtension(filePath);
 
 if (fileExtension != ".gc")
 {
-    Console.WriteLine("ERRO! Só arquivos GCODE (.gc)");
+    Console.WriteLine("ERROR! Only GCode (.gc) files are accepted.");
     Console.ReadKey();
     return;
 }
@@ -19,21 +19,21 @@ if (fileExtension != ".gc")
 var numberOfCopies = 0;
 while (true)
 {
-    Console.Write("Insira o número de passes do laser (de 2 a 99): ");
-    var parseSuccess = Int32.TryParse(Console.ReadLine(), out numberOfCopies);
+    Console.Write("Type the desired number of passes (2 to 99): ");
+    var parseSuccess = int.TryParse(Console.ReadLine(), out numberOfCopies);
     Console.WriteLine();
 
     if (parseSuccess == false)
     {
-        Console.WriteLine("ERRO! O valor deve ser um inteiro.");
+        Console.WriteLine("ERROR! Number must be an integer.");
         continue;
     }
 
     if (numberOfCopies > 1 & numberOfCopies < 99) break;
-    Console.WriteLine("ERRO! O valor deve estar entre 2 e 99.");
+    Console.WriteLine("ERROR! Accepted number of passes: 2 to 99.");
 }
 
-Console.WriteLine($"Convertendo o arquivo {filePath}");
+Console.WriteLine($"Converting file {filePath}");
 
 var fileName = Path.GetFileNameWithoutExtension(filePath);
 var directoryName = Path.GetDirectoryName(filePath);
@@ -59,7 +59,9 @@ lines.InsertRange(initialIndex + 1, duplicateLines);
 
 File.WriteAllLines(outputFilePath, lines);
 
-Console.WriteLine("Conversão concluída!");
-Console.WriteLine($"Arquivo convertido: {outputFilePath}");
+Console.WriteLine("Conversion finished!");
+Console.WriteLine($"Converted file output: {outputFilePath}");
+
+Console.WriteLine("Press any key to exit...");
 
 Console.ReadKey();

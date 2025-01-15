@@ -11,7 +11,7 @@ This C# project creates a simples CLI executable that duplicates the cut portion
 Whe your cut setup is ready, just set the layer "passes = 1", export the GCode, drag and drop the .gc file on top of the .exe file. It will generate a new .gc file with as many passes as you choose.
 
 
-![doc/laser passes.gif]()
+![Example](./doc/laser-passes.gif)
 
 
 2 passes from LightBurn:

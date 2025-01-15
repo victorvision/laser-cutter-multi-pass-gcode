@@ -1,0 +1,11 @@
+pipelines:
+  default:
+    - step:
+        name: Sync GitHub Mirror
+        image: alpine/git:latest
+        clone:
+          enabled: true
+        script:
+          - git clone --bare git@bitbucket.org:victorvisionpd/laser-cutter-multi-pass-gcode.git
+          - cd laser-cutter-multi-pass-gcode.git
+          - git push --mirror git@github.com:victorvision/laser-cutter-multi-pass-gcode.git
